@@ -5,7 +5,7 @@
   Professor: Felski
 
   Autores: Arthur Ferraz
-           Vicemzo Radin
+           Vicenzo Radin
            Gustavo de Lima
            Dimitri Cordeiro
  ============================================================
@@ -77,10 +77,10 @@ void mostrarMapa(char mapaAtual[LINHAS][COLUNAS], int movimentos, int numero) {
     // Nomes dos mapas para exibicao
     const char* nomes[TOTAL_MAPAS] = {
         "Mapa da Equipe",
-        "Classic 1",
-        "Classic 2",
-        "Desafio",
-        "Expert"
+        "Microban #1   ",
+        "Microban 2 #1 ",
+        "Microban 3 #1 ",
+        "Dimitri&Yorick"
     };
 
     cout << "=== SOKOBAN ===  Mapa: " << nomes[numero]
@@ -119,8 +119,6 @@ bool todosResolvidos(bool resolvido[TOTAL_MAPAS]) {
 // ============================================================
 // Move o jogador na direcao (dL = linha, dC = coluna)
 //
-// CORRECAO: jogador agora usa '+' quando esta sobre um alvo,
-// evitando que o simbolo '.' seja apagado permanentemente.
 // ============================================================
 void mover(char mapaAtual[LINHAS][COLUNAS], int dL, int dC, int& movimentos) {
     // Acha onde o jogador esta
@@ -136,8 +134,7 @@ void mover(char mapaAtual[LINHAS][COLUNAS], int dL, int dC, int& movimentos) {
 
     // Nao pode ir para parede
     if (mapaAtual[nL][nC] == '#') return;
-
-    // ---- Calcula o que fica na celula onde o jogador sai ----
+ 
     // Se o jogador estava sobre um alvo ('+'), restaura o alvo; senao vira espaco
     char celulaJogador = (mapaAtual[jL][jC] == '+') ? '.' : ' ';
 
@@ -153,14 +150,13 @@ void mover(char mapaAtual[LINHAS][COLUNAS], int dL, int dC, int& movimentos) {
             return;
 
         // Move a caixa: se cair em alvo vira '*', senao vira '$'
-        mapaAtual[cL][cC] = (mapaAtual[cL][cC] == '.') ? '*' : '$';
-
-        // A celula da caixa que o jogador vai ocupar:
+        mapaAtual[cL][cC] = (mapaAtual[cL][cC] == '.') ? '*' : '$';     
+   
         // se era '*' (caixa sobre alvo) o alvo deve ser marcado com '+'
         // se era '$' simplesmente o jogador vai para la com '@'
         mapaAtual[nL][nC] = (mapaAtual[nL][nC] == '*') ? '+' : '@';
     } else {
-        // Sem caixa: jogador entra na celula
+        // Sem caixa: jogador entra
         // Se for alvo ('.') usa '+', senao '@'
         mapaAtual[nL][nC] = (mapaAtual[nL][nC] == '.') ? '+' : '@';
     }
@@ -205,72 +201,73 @@ void jogar(char mapa[LINHAS][COLUNAS], int numero, bool resolvido[TOTAL_MAPAS]) 
 // ============================================================
 // Inicializa os 5 mapas dentro do main (sem variaveis globais)
 //
-// mapa[0] = Mapa da Equipe (criado pela equipe)
-// mapa[1] = Classic 1     (sokoban.info - puzzle 1)
-// mapa[2] = Classic 2     (sokoban.info - puzzle 2)
-// mapa[3] = Desafio       (sokoban.info - puzzle 3)
-// mapa[4] = Expert        (sokoban.info - puzzle 4)
+// mapa[0] = Mapa da Equipe  (criado pela equipe)
+// mapa[1] = Microban #1     (sokoban.info - David W Skinner)
+// mapa[2] = Microban 2 #1   (sokoban.info - David W Skinner)
+// mapa[3] = Microban 3 #1   (sokoban.info - David W Skinner)
+// mapa[4] = Dimitri&Yorick  (sokoban.info - Jaques Duthen, 4x3-01)
 // ============================================================
 void inicializarMapas(char mapas[TOTAL_MAPAS][LINHAS][COLUNAS]) {
 
-    // --- Mapa 0: Mapa da Equipe ---
+    // --- Mapa 0: Mapa da Equipe (criado pela equipe) ---
+    // Layout proprio: 2 caixas, 2 alvos
     const char m0[LINHAS][COLUNAS] = {
-        "###########",
-        "#    .    #",
-        "#  $   $  #",
-        "#    @    #",
-        "#  .   .  #",
-        "#         #",
-        "#         #",
-        "###########"
+        "           ",   
+        "  #####    ",
+        "  #   #    ",
+        "  # $@#    ",
+        "###  .#    ",
+        "#   $ #    ",
+        "# . ###    ",
+        "#####      "
     };
 
-    // --- Mapa 1: Classic 1 ---
+    // --- Mapa 1: Microban #1 - David W Skinner (sokoban.info) ---
     const char m1[LINHAS][COLUNAS] = {
-        "###########",
-        "#         #",
-        "#  $ . $  #",
-        "#    @    #",
-        "#  . # .  #",
-        "#         #",
-        "#         #",
-        "###########"
+        "  ####     ",
+        "  # .#     ",
+        "  #  ###   ",
+        "###$@  #   ",
+        "#      #   ",
+        "#  ####    ",
+        "####       ",
+        "           "
     };
 
-    // --- Mapa 2: Classic 2 ---
+    // --- Mapa 2: Microban 2 #1 - David W Skinner (sokoban.info) ---
     const char m2[LINHAS][COLUNAS] = {
-        "###########",
-        "#   #     #",
-        "# $ # $ . #",
-        "#   @ .   #",
-        "# $   #   #",
-        "# .   #   #",
-        "#         #",
-        "###########"
+        " ######    ",
+        " #    #    ",
+        " #.$  #    ",
+        " #  @ #    ",
+        "## ####    ",
+        " #  #      ",
+        " ####      ",
+        "           "
     };
 
-    // --- Mapa 3: Desafio ---
+    // --- Mapa 3: Microban 3 #1 - David W Skinner (sokoban.info) ---
     const char m3[LINHAS][COLUNAS] = {
-        "###########",
-        "#         #",
-        "#  $$$    #",
-        "#   @...  #",
-        "#   ###   #",
-        "#         #",
-        "#         #",
-        "###########"
+        "  ####     ",
+        "  #  ##    ",
+        "## $$  #   ",
+        "#  $@  #   ",
+        "# .    #   ",
+        "##  .###   ",
+        " #  .#     ",
+        " ####      "
     };
 
-    // --- Mapa 4: Expert ---
+    // --- Mapa 4: Dimitri & Yorick 4x3-01 - Jaques Duthen (sokoban.info) ---
     const char m4[LINHAS][COLUNAS] = {
-        "###########",
-        "#  #      #",
-        "#  # $$ . #",
-        "#  #  @   #",
-        "#  ## # . #",
-        "#    $    #",
-        "#    .    #",
-        "###########"
+        "  #####    ",
+        " ##   ##   ",
+        " # $$.#    ",
+        " # @. #    ",
+        " ##   ##   ",
+        "  #####    ",
+        "           ",
+        "           "
     };
 
     // Copia cada mapa para o array tridimensional
@@ -307,10 +304,10 @@ int main() {
 
     const char* nomes[TOTAL_MAPAS] = {
         "Mapa da Equipe",
-        "Classic 1     ",
-        "Classic 2     ",
-        "Desafio       ",
-        "Expert        "
+        "Microban #1   ",
+        "Microban 2 #1 ",
+        "Microban 3 #1 ",
+        "Dimitri&Yorick"
     };
 
     int opcao = 0;
