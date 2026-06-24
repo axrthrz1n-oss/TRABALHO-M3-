@@ -227,9 +227,9 @@ void inicializarMapas(char mapas[TOTAL_MAPAS][LINHAS][COLUNAS]) {
         "  ####     ",
         "  # .#     ",
         "  #  ###   ",
-        "###$@  #   ",
+        "## $@  #   ",
         "#      #   ",
-        "#  ####    ",
+        "#   ###    ",
         "####       ",
         "           "
     };
@@ -249,7 +249,7 @@ void inicializarMapas(char mapas[TOTAL_MAPAS][LINHAS][COLUNAS]) {
     // --- Mapa 3: Microban 3 #1 - David W Skinner (sokoban.info) ---
     const char m3[LINHAS][COLUNAS] = {
         "  ####     ",
-        "  #  ##    ",
+        " #    #    ",
         "## $$  #   ",
         "#  $@  #   ",
         "# .    #   ",
@@ -318,7 +318,7 @@ int main() {
         cout << "         S O K O B A N\n";
         cout << "================================\n";
         cout << " Trabalho T3 - Algoritmos e\n";
-        cout << " Programacao  - UNIVALI\n\n";
+        cout << " Programacao I - UNIVALI\n\n";
         cout << " Autores:\n";
         cout << "   Arthur Ferraz\n";
         cout << "   Vicenzo Radin\n";
