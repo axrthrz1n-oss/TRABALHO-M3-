@@ -318,7 +318,7 @@ int main() {
         cout << "         S O K O B A N\n";
         cout << "================================\n";
         cout << " Trabalho T3 - Algoritmos e\n";
-        cout << " Programacao I - UNIVALI/NID\n\n";
+        cout << " Programacao  - UNIVALI\n\n";
         cout << " Autores:\n";
         cout << "   Arthur Ferraz\n";
         cout << "   Vicenzo Radin\n";
