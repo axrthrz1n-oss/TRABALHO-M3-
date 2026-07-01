@@ -209,17 +209,17 @@ void jogar(char mapa[LINHAS][COLUNAS], int numero, bool resolvido[TOTAL_MAPAS]) 
 // ============================================================
 void inicializarMapas(char mapas[TOTAL_MAPAS][LINHAS][COLUNAS]) {
 
-    // --- Mapa 0: Mapa da Equipe (criado pela equipe) ---
+      // --- Mapa 0: Mapa da Equipe (criado pela equipe) ---
     // Layout proprio: 2 caixas, 2 alvos
     const char m0[LINHAS][COLUNAS] = {
-        "           ",   
+        "           ",
         "  #####    ",
         "  #   #    ",
-        "  # $@#    ",
-        "###  .#    ",
-        "#   $ #    ",
-        "# . ###    ",
-        "#####      "
+        "  #$ $#    ",
+        "  #. .#    ",
+        "  #  @#    ",
+        "  #####    ",
+        "           "
     };
 
     // --- Mapa 1: Microban #1 - David W Skinner (sokoban.info) ---
@@ -239,9 +239,9 @@ void inicializarMapas(char mapas[TOTAL_MAPAS][LINHAS][COLUNAS]) {
         " ######    ",
         " #    #    ",
         " #.$  #    ",
-        " #  @ #    ",
+        " #$ @ #    ",
         "## ####    ",
-        " #  #      ",
+        " #. #      ",
         " ####      ",
         "           "
     };
