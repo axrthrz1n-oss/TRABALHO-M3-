@@ -134,7 +134,7 @@ void mover(char mapaAtual[LINHAS][COLUNAS], int dL, int dC, int& movimentos) {
 
     // Nao pode ir para parede
     if (mapaAtual[nL][nC] == '#') return;
- 
+
     // Se o jogador estava sobre um alvo ('+'), restaura o alvo; senao vira espaco
     char celulaJogador = (mapaAtual[jL][jC] == '+') ? '.' : ' ';
 
@@ -150,8 +150,8 @@ void mover(char mapaAtual[LINHAS][COLUNAS], int dL, int dC, int& movimentos) {
             return;
 
         // Move a caixa: se cair em alvo vira '*', senao vira '$'
-        mapaAtual[cL][cC] = (mapaAtual[cL][cC] == '.') ? '*' : '$';     
-   
+        mapaAtual[cL][cC] = (mapaAtual[cL][cC] == '.') ? '*' : '$';
+
         // se era '*' (caixa sobre alvo) o alvo deve ser marcado com '+'
         // se era '$' simplesmente o jogador vai para la com '@'
         mapaAtual[nL][nC] = (mapaAtual[nL][nC] == '*') ? '+' : '@';
@@ -209,7 +209,7 @@ void jogar(char mapa[LINHAS][COLUNAS], int numero, bool resolvido[TOTAL_MAPAS]) 
 // ============================================================
 void inicializarMapas(char mapas[TOTAL_MAPAS][LINHAS][COLUNAS]) {
 
-      // --- Mapa 0: Mapa da Equipe (criado pela equipe) ---
+    // --- Mapa 0: Mapa da Equipe (criado pela equipe) ---
     // Layout proprio: 2 caixas, 2 alvos
     const char m0[LINHAS][COLUNAS] = {
         "           ",
@@ -330,6 +330,7 @@ int main() {
         cout << " 3 - Sair\n\n";
         cout << " Escolha: ";
         cin >> opcao;
+        cin.ignore(1000, '\n'); // limpa o Enter que sobra no buffer, evita que lerTecla() o capture
 
         // --- JOGAR ---
         if (opcao == 1) {
@@ -345,6 +346,7 @@ int main() {
 
             int escolha;
             cin >> escolha;
+            cin.ignore(1000, '\n'); // limpa o Enter que sobra no buffer
 
             // Valida a escolha e joga o mapa selecionado
             if (escolha >= 1 && escolha <= TOTAL_MAPAS)
